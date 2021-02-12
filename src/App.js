@@ -1,25 +1,51 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import './App.css';
+import { AllRecipes } from './features/allRecipes/AllRecipes.js';
+import { FavoriteRecipes } from './features/favoriteRecipes/FavoriteRecipes';
+import { SearchTerm } from './features/searchTerm/SearchTerm.js';
+ 
+export function App(props) {
+  const { state, dispatch } = props;
+  
+
+  const visibleAllRecipes = getFIlterRecipes(state.allRecipes, state.searchTerm);
+  const visibleFavoriteRecipes = getFIlterRecipes(state.favoriteRecipes, state.searchTerm);
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main>
+      <section>
+        <SearchTerm 
+          searchTerm={state.searchTerm}
+          dispatch={dispatch}
+        />
+      </section>
+      <section>
+        <h2> Favorite Recipes </h2>
+        <FavoriteRecipes 
+          favoriteRecipes={visibleFavoriteRecipes}
+          dispatch={dispatch}
+        />
+      </section>
+      <section>
+        <h2> All Recipes </h2>
+        <AllRecipes 
+          allRecipes={visibleAllRecipes}
+          dispatch={dispatch}
+        />
+
+      </section>
+    </main>
+
   );
+  
 }
 
-export default App;
+
+function getFIlterRecipes(recipes, searchTerm){
+  if(recipes){
+    return recipes.filter( recipe => recipe.name.toLowerCase().includes(searchTerm.toLowerCase()));
+  }
+  return [];
+  
+}
