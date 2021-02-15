@@ -3,7 +3,7 @@ import './App.css';
 import { AllRecipes } from './features/allRecipes/AllRecipes.js';
 import { FavoriteRecipes } from './features/favoriteRecipes/FavoriteRecipes';
 import { SearchTerm } from './features/searchTerm/SearchTerm.js';
- 
+
 export function App(props) {
   const { state, dispatch } = props;
   

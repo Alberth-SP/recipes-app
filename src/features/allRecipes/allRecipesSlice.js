@@ -6,7 +6,7 @@ export const loadData = () => {
         payload: allRecipesData
     };
 }
-
+console.log("DATAS", allRecipesData);
 const initialAllRecipes = [];
 /* Compomentes Reductores */
 export const allRecipesReducer = (allRecipes=initialAllRecipes, action) => {

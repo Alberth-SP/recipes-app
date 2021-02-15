@@ -14,11 +14,7 @@ export const removeRecipe = (recipe) => {
 
     };
 }
-const initialState = [
-    { id: 0, name: 'Biscuits', img: './../../img/biscuits.jpg'},
-    { id: 1, name: 'Bulgogi', img: '../../img/bulgogi.jpg'},
-    { id: 2, name: 'Calamari', img: '../../img/calamari.jpg'}
-];
+const initialState = [];
 export const favoriteRecipesReducer = (favoriteRecipes=initialState, action) => {
     switch(action.type){
         case 'favoriteRecipes/addRecipe':
