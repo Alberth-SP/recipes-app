@@ -2,24 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import { App  } from './App.js';
+import { Provider } from 'react-redux';
 import   store  from './app/store.js';
 import allRecipesData from './data.js';
 //import reportWebVitals from './reportWebVitals';
 
 
-const render = () => {
-  ReactDOM.render(
-  <App 
-  state={store.getState()}
-  dispatch={store.dispatch}
-  />,
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>
+ ,
   document.getElementById('root')
-)
-
-}
-
-render();
-store.subscribe(render);
+);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

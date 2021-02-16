@@ -13,6 +13,10 @@ export const clearSearchTerm = () => {
     };
 }
 
+
+export const selectSearchTerm = (state) =>  state.searchTerm;
+
+
 const initialSearchTerm = '';
 
 export const searchTermReducer = (searchTerm=initialSearchTerm, action) => {

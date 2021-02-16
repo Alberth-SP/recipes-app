@@ -1,12 +1,27 @@
 
 import allRecipesData from '../../data.js';
+import { selectSearchTerm } from '../searchTerm/searchTermSlice';
+
 export const loadData = () => {
     return {
         type: 'allRecipes/loadData',
         payload: allRecipesData
     };
 }
-console.log("DATAS", allRecipesData);
+
+
+export const selectAllRecipes = (state) => state.allRecipes;
+
+export const selectFilteredAllRecipes = (state) => {
+    const allRecipes = selectAllRecipes(state);
+    const searchTerm = selectSearchTerm(state);
+
+    return allRecipes.filter( (recipe) => 
+        recipe.name.toLowerCase().includes(searchTerm.toLowerCase())
+
+    );
+
+};
 const initialAllRecipes = [];
 /* Compomentes Reductores */
 export const allRecipesReducer = (allRecipes=initialAllRecipes, action) => {
